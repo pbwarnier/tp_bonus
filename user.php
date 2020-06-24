@@ -9,7 +9,7 @@
 	?>	
 		<div class="container">
 			<div class="w-100 p-3">
-				<h1>Base de donnée</h1>
+				<h1>Base de données</h1>
 				<div class="p-3 rounded border border-dark">
 					<?php
 						// affiche tout le tableau

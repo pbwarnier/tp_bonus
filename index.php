@@ -81,6 +81,9 @@
     		if ($password != $confirmPassword) {
     			$errors['comparePassword'] = 'Les mots de passe ne sont pas identiques';
     		}
+    		else{
+    			$_POST['password'] = password_hash($password, PASSWORD_BCRYPT);
+    		}
     	}
     	else{
     		$errors['password'] = 'Veuillez renseigner un mot de passe';
@@ -114,7 +117,7 @@
 	<div class="container">
 		<div class="p-3 w-100">
 			<form action="index.php" method="POST">
-				<fieldset class="p-3 border">
+				<fieldset class="p-3 border border-dark">
 					<legend>M'inscrire</legend>
 					<div class="form-group d-flex">
 						<div class="mr-3 custom-control custom-radio">
@@ -207,6 +210,7 @@
 		$("input[name='password']").keyup(function(){
 			// prend la value du selecteur choisi précédement
 			var password = $(this).val();
+			var textForce = $("#force");
 			var force = 0;
 
 			// vérifie que la regex est true ou false
@@ -234,21 +238,25 @@
 				force ++;
 			}
 
-			// couleur en fonction de la force
-			if (force == 1) {
+			// couleur et texte en fonction de la force
+			if (force == 1 || password == '') {
 				var bgColor = '#dc3545';
+				textForce.text('Faible');
 			}
 			else{
 				if (force == 2) {
 					var bgColor = '#ffc107';
+					textForce.text('Moyen');
 				}
 				else{
 					if (force == 3) {
 						var bgColor = '#28a745';
+						textForce.text('Fort');
 					}
 					else{
 						if (force == 4) {
 							var bgColor = '#0d6e25';
+							textForce.text('Très fort');
 						}
 					}
 				}
@@ -256,8 +264,6 @@
 
 			document.getElementById('progress').style.backgroundColor = bgColor;
 			document.getElementById('progress').style.width = 25*force+'%';
-
-			//document.getElementById('progress').setAttribute('style', 'width:'+25*force+'%; background-color: '+bgColor);
 
 			// change le css de la progressbar
 			/* $("#progress").css({

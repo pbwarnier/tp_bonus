@@ -2,6 +2,11 @@
 
 body{ font-family: 'Montserrat', sans-serif !important;}
 
+nav div{
+	width: 30px;
+	height: 30px;
+}
+
 #forcePassword{
 	display: none;
 	margin-top: 1rem;
