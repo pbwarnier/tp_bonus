@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body{ font-family: 'Montserrat', sans-serif !important;}
+
+#forcePassword{
+	display: none;
+	margin-top: 1rem;
+}
+
+.force-progress{
+	height: 10px;
+	background-color: #e9ecef;
+	overflow: hidden;
+}
+
+.force-progress .p-bar{
+	width: 0;
+	height: 100%;
+	transition: width ease-in-out 1s;
+}
+
+#check_passwords{
+	display: none;
+	margin-top: 1rem;
+}
+
+.valid {
+  	color: #343a40;
+}
+
+.valid:before {
+  	content: "✔ ";
+  	color: #28a745;
+}
+
+.invalid {
+  	color: #343a40;
+}
+
+.invalid:before {
+  	content: "✖ ";
+  	color: #dc3545;
+}
